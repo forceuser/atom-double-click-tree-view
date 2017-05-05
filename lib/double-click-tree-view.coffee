@@ -16,7 +16,7 @@ class DoubleClickTreeView
   deactivate: ->
     @treeView.entryClicked = @treeView.originalEntryClicked
     delete @treeView.originalEntryClicked
-    @treeView.off 'dblclick', '.entry'
+    $(@treeView.element).off 'dblclick', '.entry'
 
   entryDoubleClicked: (e) ->
     @originalEntryClicked(e)
