@@ -1,15 +1,15 @@
 'use strict'
+$ = require 'jquery'
 
 class DoubleClickTreeView
-  activate: ->
+  activate: ->    
     atom.packages.activatePackage('tree-view').then (treeViewPkg) =>
-      @treeView = treeViewPkg.mainModule.createView()
-      @treeView.originalEntryClicked = @treeView.entryClicked
-
+      @treeView = treeViewPkg.mainModule.createView()      
+      @treeView.originalEntryClicked = @treeView.entryClicked      
       @treeView.entryClicked = (e) ->
         false
 
-      @treeView.on 'dblclick', '.entry', (e) =>
+      $(@treeView.element).on 'dblclick', '.entry', (e) =>
         @treeView.openSelectedEntry.call(@treeView)
         false
 
